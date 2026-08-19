@@ -31,7 +31,7 @@ def minimum_coin_change(coins, amount):
 
 def main():
     print("=" * 50)
-    print("DAA Practical 5: Coin Change Using Dynamic Programming")
+    print("DAA Practical 7: Coin Change Using Dynamic Programming")
     print("=" * 50)
 
     try:

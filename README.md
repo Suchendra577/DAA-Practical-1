@@ -18,7 +18,7 @@ DAA-Practicals/
 ├── DAA_Practical_3.ipynb       # Practical 3: Heap Sort Algorithm (Interactive Notebook)
 ├── daa_practical_3_heap_sort.py# Practical 3: Standalone Heap Sort Python Script
 ├── daa_practical_4_factorial_comparison.py # Practical 4: Factorial comparison
-├── daa_practical_5_coin_change.py # Practical 5: Coin change using dynamic programming
+├── daa_practical_7_coin_change.py # Practical 7: Coin change using dynamic programming
 └── README.md                   # Comprehensive Laboratory Documentation
 ```
 
@@ -95,8 +95,8 @@ def heap_sort(arr):
 
   ---
 
-### 🔹 Practical 5: Coin Change Using Dynamic Programming
-* **File:** `daa_practical_5_coin_change.py`
+### 🔹 Practical 7: Coin Change Using Dynamic Programming
+* **File:** `daa_practical_7_coin_change.py`
 * **Overview:** Finds the minimum number of coins needed to make a user-provided amount using the dynamic programming approach.
 * **Output:** Displays an optimal coin combination, the minimum coin count, execution time, and complexity analysis. It also reports when the amount cannot be formed.
 
@@ -115,7 +115,7 @@ def heap_sort(arr):
 | **Practical 3** | **Heap Sort** | $\mathcal{O}(N \log N)$ | $\mathcal{O}(N \log N)$ | $\mathcal{O}(N \log N)$ | $\mathcal{O}(1)$ | Unstable |
 | **Practical 4** | **Iterative Factorial** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | N/A |
 | **Practical 4** | **Recursive Factorial** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | N/A |
-| **Practical 5** | **Coin Change (Dynamic Programming)** | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A)$ | N/A |
+| **Practical 7** | **Coin Change (Dynamic Programming)** | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A)$ | N/A |
 
 ---
 
@@ -146,14 +146,14 @@ Iterative space complexity: O(1)
 Recursive space complexity: O(N) [Call Stack]
 ```
 
-For Practical 5:
+For Practical 7:
 ```bash
-python daa_practical_5_coin_change.py
+python daa_practical_7_coin_change.py
 ```
 **Sample Terminal Run:**
 ```text
 ==================================================
-DAA Practical 5: Coin Change Using Dynamic Programming
+DAA Practical 7: Coin Change Using Dynamic Programming
 ==================================================
 Enter coin denominations separated by spaces: 1 5 6 9
 Enter the amount to make: 11
