@@ -18,6 +18,7 @@ DAA-Practicals/
 ├── DAA_Practical_3.ipynb       # Practical 3: Heap Sort Algorithm (Interactive Notebook)
 ├── daa_practical_3_heap_sort.py# Practical 3: Standalone Heap Sort Python Script
 ├── daa_practical_4_factorial_comparison.py # Practical 4: Factorial comparison
+├── daa_practical_5_knapsack.py # Practical 5: 0/1 Knapsack using dynamic programming
 ├── daa_practical_7_coin_change.py # Practical 7: Coin change using dynamic programming
 └── README.md                   # Comprehensive Laboratory Documentation
 ```
@@ -95,6 +96,15 @@ def heap_sort(arr):
 
   ---
 
+### 🔹 Practical 5: 0/1 Knapsack Using Dynamic Programming
+* **File:** `daa_practical_5_knapsack.py`
+* **Overview:** Selects items with maximum total value without exceeding the user-provided knapsack capacity.
+* **Input:** Item weights, item values, and knapsack capacity.
+* **Example:** For weights `[2, 3, 4, 5]`, values `[3, 4, 5, 6]`, and capacity `5`, the maximum value is `7` using items 1 and 2.
+* **Output:** Displays selected items, total weight, maximum value, execution time, and complexity analysis.
+
+---
+
 ### 🔹 Practical 7: Coin Change Using Dynamic Programming
 * **File:** `daa_practical_7_coin_change.py`
 * **Overview:** Finds the minimum number of coins needed to make a user-provided amount using the dynamic programming approach.
@@ -115,6 +125,7 @@ def heap_sort(arr):
 | **Practical 3** | **Heap Sort** | $\mathcal{O}(N \log N)$ | $\mathcal{O}(N \log N)$ | $\mathcal{O}(N \log N)$ | $\mathcal{O}(1)$ | Unstable |
 | **Practical 4** | **Iterative Factorial** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | N/A |
 | **Practical 4** | **Recursive Factorial** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | N/A |
+| **Practical 5** | **0/1 Knapsack (Dynamic Programming)** | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | N/A |
 | **Practical 7** | **Coin Change (Dynamic Programming)** | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A)$ | N/A |
 
 ---
@@ -144,6 +155,33 @@ Iterative time complexity: O(N)
 Recursive time complexity: O(N)
 Iterative space complexity: O(1)
 Recursive space complexity: O(N) [Call Stack]
+```
+
+For Practical 5:
+```bash
+python daa_practical_5_knapsack.py
+```
+**Sample Terminal Run:**
+```text
+==================================================
+DAA Practical 5: 0/1 Knapsack Using Dynamic Programming
+==================================================
+Enter item weights separated by spaces: 2 3 4 5
+Enter item values separated by spaces: 3 4 5 6
+Enter knapsack capacity: 5
+
+Weights: [2, 3, 4, 5]
+Values: [3, 4, 5, 6]
+Capacity: 5
+Selected item numbers: [1, 2]
+Total selected weight: 5
+Maximum value: 7
+Execution time: 0.000020000 seconds
+--------------------------------------------------
+Time complexity: O(N * W)
+Space complexity: O(N * W)
+N = number of items, W = knapsack capacity
+Result verified: True
 ```
 
 For Practical 7:
