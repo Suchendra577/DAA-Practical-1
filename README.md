@@ -19,6 +19,7 @@ DAA-Practicals/
 ├── daa_practical_3_heap_sort.py# Practical 3: Standalone Heap Sort Python Script
 ├── daa_practical_4_factorial_comparison.py # Practical 4: Factorial comparison
 ├── daa_practical_5_knapsack.py # Practical 5: 0/1 Knapsack using dynamic programming
+├── daa_practical_6_matrix_chain.py # Practical 6: Matrix chain multiplication using dynamic programming
 ├── daa_practical_7_coin_change.py # Practical 7: Coin change using dynamic programming
 └── README.md                   # Comprehensive Laboratory Documentation
 ```
@@ -105,6 +106,15 @@ def heap_sort(arr):
 
 ---
 
+### 🔹 Practical 6: Matrix Chain Multiplication Using Dynamic Programming
+* **File:** `daa_practical_6_matrix_chain.py`
+* **Overview:** Finds the parenthesization of a chain of matrices that minimizes the number of scalar multiplications.
+* **Input:** Matrix dimensions. For `N` matrices, enter `N + 1` dimensions.
+* **Example:** Dimensions `[10, 30, 5, 60]` represent `A1(10 x 30)`, `A2(30 x 5)`, and `A3(5 x 60)`. The minimum cost is `4500`.
+* **Output:** Displays the optimal multiplication order, minimum scalar multiplication count, execution time, and complexity analysis.
+
+---
+
 ### 🔹 Practical 7: Coin Change Using Dynamic Programming
 * **File:** `daa_practical_7_coin_change.py`
 * **Overview:** Finds the minimum number of coins needed to make a user-provided amount using the dynamic programming approach.
@@ -126,6 +136,7 @@ def heap_sort(arr):
 | **Practical 4** | **Iterative Factorial** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ | N/A |
 | **Practical 4** | **Recursive Factorial** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | N/A |
 | **Practical 5** | **0/1 Knapsack (Dynamic Programming)** | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | N/A |
+| **Practical 6** | **Matrix Chain Multiplication (Dynamic Programming)** | $\mathcal{O}(N^3)$ | $\mathcal{O}(N^3)$ | $\mathcal{O}(N^3)$ | $\mathcal{O}(N^2)$ | N/A |
 | **Practical 7** | **Coin Change (Dynamic Programming)** | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A)$ | N/A |
 
 ---
@@ -182,6 +193,28 @@ Time complexity: O(N * W)
 Space complexity: O(N * W)
 N = number of items, W = knapsack capacity
 Result verified: True
+```
+
+For Practical 6:
+```bash
+python daa_practical_6_matrix_chain.py
+```
+**Sample Terminal Run:**
+```text
+==================================================
+DAA Practical 6: Matrix Chain Multiplication
+==================================================
+Enter matrix dimensions separated by spaces: 10 30 5 60
+
+Matrix dimensions: [10, 30, 5, 60]
+Number of matrices: 3
+Optimal multiplication order: ((A1 x A2) x A3)
+Minimum scalar multiplications: 4500
+Execution time: 0.000020000 seconds
+--------------------------------------------------
+Time complexity: O(N^3)
+Space complexity: O(N^2)
+N = number of matrices
 ```
 
 For Practical 7:
