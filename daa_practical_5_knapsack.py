@@ -1,84 +1,41 @@
-"""DAA Practical 5: 0/1 Knapsack using Dynamic Programming.
+def knapsack_dp(weights, values, capacity):
+    """
+    Solves the 0/1 Knapsack problem using dynamic programming.
 
-Example:
-    Weights = [2, 3, 4, 5]
-    Values = [3, 4, 5, 6]
-    Capacity = 5
-    Maximum value = 7 (items with weights 2 and 3)
-"""
+    Args:
+        weights (list): A list of weights of the items.
+        values (list): A list of values of the items.
+        capacity (int): The maximum capacity of the knapsack.
 
-import time
+    Returns:
+        int: The maximum value that can be obtained.
+    """
+    n = len(values)
+    
+    # dp[i][w] will store the maximum value that can be obtained
+    # with first i items and capacity w.
+    dp = [[0 for _ in range(capacity + 1)] for _ in range(n + 1)]
 
+    # Build dp table in bottom-up manner
+    for i in range(1, n + 1):
+        for w in range(1, capacity + 1):
+            # If current item's weight is more than current capacity w,
+            # then it cannot be included.
+            if weights[i-1] > w:
+                dp[i][w] = dp[i-1][w]
+            else:
+                # Else, either include current item or not.
+                # Compare value if included with value if not included.
+                dp[i][w] = max(values[i-1] + dp[i-1][w - weights[i-1]], dp[i-1][w])
 
-def knapsack(weights, values, capacity):
-    """Return the maximum value and selected item indexes."""
-    item_count = len(weights)
-    table = [[0] * (capacity + 1) for _ in range(item_count + 1)]
+    return dp[n][capacity]
 
-    for item in range(1, item_count + 1):
-        weight = weights[item - 1]
-        value = values[item - 1]
-        for current_capacity in range(capacity + 1):
-            table[item][current_capacity] = table[item - 1][current_capacity]
-            if weight <= current_capacity:
-                table[item][current_capacity] = max(
-                    table[item][current_capacity],
-                    value + table[item - 1][current_capacity - weight],
-                )
+# Example items
+weights = [10, 20, 30, 40, 50]
+values = [60, 100, 120, 140, 180]
+capacity = 70
 
-    selected_items = []
-    current_capacity = capacity
-    for item in range(item_count, 0, -1):
-        if table[item][current_capacity] != table[item - 1][current_capacity]:
-            selected_items.append(item - 1)
-            current_capacity -= weights[item - 1]
-
-    selected_items.reverse()
-    return table[item_count][capacity], selected_items
-
-
-def main():
-    print("=" * 50)
-    print("DAA Practical 5: 0/1 Knapsack Using Dynamic Programming")
-    print("=" * 50)
-
-    try:
-        weights = list(map(int, input("Enter item weights separated by spaces: ").split()))
-        values = list(map(int, input("Enter item values separated by spaces: ").split()))
-        capacity = int(input("Enter knapsack capacity: "))
-
-        if not weights or len(weights) != len(values):
-            print("Invalid input! Weights and values must contain the same number of items.")
-            return
-        if any(weight <= 0 for weight in weights) or any(value < 0 for value in values):
-            print("Invalid input! Weights must be positive and values cannot be negative.")
-            return
-        if capacity < 0:
-            print("Invalid input! Capacity cannot be negative.")
-            return
-
-        start_time = time.perf_counter()
-        maximum_value, selected_items = knapsack(weights, values, capacity)
-        execution_time = time.perf_counter() - start_time
-
-        selected_weight = sum(weights[index] for index in selected_items)
-        selected_value = sum(values[index] for index in selected_items)
-
-        print(f"\nWeights: {weights}")
-        print(f"Values: {values}")
-        print(f"Capacity: {capacity}")
-        print(f"Selected item numbers: {[index + 1 for index in selected_items]}")
-        print(f"Total selected weight: {selected_weight}")
-        print(f"Maximum value: {maximum_value}")
-        print(f"Execution time: {execution_time:.9f} seconds")
-        print("-" * 50)
-        print("Time complexity: O(N * W)")
-        print("Space complexity: O(N * W)")
-        print("N = number of items, W = knapsack capacity")
-        print(f"Result verified: {selected_value == maximum_value}")
-    except ValueError:
-        print("Invalid input! Please enter integers only.")
-
-
-if __name__ == "__main__":
-    main()
+max_value = knapsack_dp(weights, values, capacity)
+print(f"Items: {list(zip(weights, values))}")
+print(f"Knapsack Capacity: {capacity}")
+print(f"Maximum value in knapsack: {max_value}")
