@@ -21,6 +21,7 @@ DAA-Practicals/
 ├── daa_practical_5_knapsack.py # Practical 5: 0/1 Knapsack using dynamic programming
 ├── daa_practical_6_matrix_chain.py # Practical 6: Matrix chain multiplication using dynamic programming
 ├── daa_practical_7_coin_change.py # Practical 7: Coin change using dynamic programming
+├── daa_practical_8_graph_dfs_bfs.py # Practical 8: Graph implementation with DFS & BFS traversal
 └── README.md                   # Comprehensive Laboratory Documentation
 ```
 
@@ -122,6 +123,56 @@ def heap_sort(arr):
 
 ---
 
+### 🔹 Practical 8: Implementation of Graph and Searching (DFS and BFS)
+* **File:** `daa_practical_8_graph_dfs_bfs.py`
+* **Overview:** Builds an undirected graph as an adjacency list from user-provided vertices and edges, then traverses it using both **Breadth-First Search (BFS)** and **Depth-First Search (DFS)**.
+* **Core Operations:**
+  1. **`build_graph(vertex_count, edges)`**: Constructs an adjacency list from the given vertices and edges.
+  2. **`breadth_first_search(graph, start_vertex)`**: Explores the graph level by level using a queue (`collections.deque`), visiting the nearest vertices first.
+  3. **`depth_first_search(graph, start_vertex)`**: Explores the graph by going as deep as possible along each branch before backtracking, implemented recursively.
+* **Input:** Number of vertices, number of edges, each edge as a pair of vertices, and a starting vertex.
+* **Example:** For `6` vertices, edges `[(0, 1), (0, 2), (1, 3), (2, 4), (3, 5)]`, and starting vertex `0`:
+  - BFS traversal order: `[0, 1, 2, 3, 4, 5]`
+  - DFS traversal order: `[0, 1, 3, 5, 2, 4]`
+* **Output:** Displays the BFS traversal order, DFS traversal order, execution time for each, any unreachable vertices, and the complexity analysis.
+
+#### Code Snippet (BFS & DFS):
+```python
+from collections import deque
+
+def breadth_first_search(graph, start_vertex):
+    visited = {start_vertex}
+    traversal_order = []
+    queue = deque([start_vertex])
+
+    while queue:
+        current_vertex = queue.popleft()
+        traversal_order.append(current_vertex)
+
+        for neighbour in sorted(graph[current_vertex]):
+            if neighbour not in visited:
+                visited.add(neighbour)
+                queue.append(neighbour)
+
+    return traversal_order
+
+def depth_first_search(graph, start_vertex):
+    visited = set()
+    traversal_order = []
+
+    def visit(vertex):
+        visited.add(vertex)
+        traversal_order.append(vertex)
+        for neighbour in sorted(graph[vertex]):
+            if neighbour not in visited:
+                visit(neighbour)
+
+    visit(start_vertex)
+    return traversal_order
+```
+
+---
+
 ## 📊 Algorithmic Complexity Comparison
 
 | Practical | Algorithm | Best Case Time | Average Case Time | Worst Case Time | Space Complexity | Stability |
@@ -138,6 +189,8 @@ def heap_sort(arr):
 | **Practical 5** | **0/1 Knapsack (Dynamic Programming)** | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | $\mathcal{O}(N \times W)$ | N/A |
 | **Practical 6** | **Matrix Chain Multiplication (Dynamic Programming)** | $\mathcal{O}(N^3)$ | $\mathcal{O}(N^3)$ | $\mathcal{O}(N^3)$ | $\mathcal{O}(N^2)$ | N/A |
 | **Practical 7** | **Coin Change (Dynamic Programming)** | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A \times C)$ | $\mathcal{O}(A)$ | N/A |
+| **Practical 8** | **Breadth-First Search (BFS)** | $\mathcal{O}(V + E)$ | $\mathcal{O}(V + E)$ | $\mathcal{O}(V + E)$ | $\mathcal{O}(V)$ | N/A |
+| **Practical 8** | **Depth-First Search (DFS)** | $\mathcal{O}(V + E)$ | $\mathcal{O}(V + E)$ | $\mathcal{O}(V + E)$ | $\mathcal{O}(V)$ | N/A |
 
 ---
 
@@ -238,6 +291,40 @@ Execution time: 0.000010000 seconds
 Time complexity: O(A * C)
 Space complexity: O(A)
 A = target amount, C = number of coin denominations
+```
+
+For Practical 8:
+```bash
+python daa_practical_8_graph_dfs_bfs.py
+```
+**Sample Terminal Run:**
+```text
+==================================================
+DAA Practical 8: Implementation of Graph and Searching (DFS and BFS)
+==================================================
+Enter the number of vertices: 6
+Enter the number of edges: 5
+Enter each edge as two space-separated vertices (e.g. 0 1):
+Edge 1: 0 1
+Edge 2: 0 2
+Edge 3: 1 3
+Edge 4: 2 4
+Edge 5: 3 5
+Enter the starting vertex: 0
+
+Vertices: 6
+Edges: [(0, 1), (0, 2), (1, 3), (2, 4), (3, 5)]
+Starting vertex: 0
+
+BFS traversal order: [0, 1, 2, 3, 4, 5]
+BFS execution time: 0.000051400 seconds
+
+DFS traversal order: [0, 1, 3, 5, 2, 4]
+DFS execution time: 0.000010100 seconds
+--------------------------------------------------
+Time complexity: O(V + E)
+Space complexity: O(V)
+V = number of vertices, E = number of edges
 ```
 
 ### Option 2: Using Jupyter Notebook / VS Code / Google Colab
